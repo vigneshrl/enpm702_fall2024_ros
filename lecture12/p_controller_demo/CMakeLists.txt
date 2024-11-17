@@ -15,7 +15,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 
 include_directories(include/p_controller_demo)
 
-add_executable(p_controller_demo src/main.cpp src/p_controller_demo_node.cpp)
+add_executable(p_controller_demo src/main.cpp src/p_controller_demo_node.cpp src/color_utils.cpp)
 
 ament_target_dependencies(p_controller_demo rclcpp nav_msgs geometry_msgs tf2_geometry_msgs)
 

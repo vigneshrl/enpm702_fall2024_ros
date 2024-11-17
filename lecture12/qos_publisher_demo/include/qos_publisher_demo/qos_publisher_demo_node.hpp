@@ -1,18 +1,19 @@
 #pragma once
 
-#include "rclcpp/rclcpp.hpp"
 #include <example_interfaces/msg/int64.hpp>
 
-class QoSPublisherDemoNode : public rclcpp::Node
-{
-public:
-    QoSPublisherDemoNode() : Node("qos_publisher_demo_node")
-    {
+#include "color_utils.hpp"
+#include "rclcpp/rclcpp.hpp"
+
+class QoSPublisherDemoNode : public rclcpp::Node {
+   public:
+    QoSPublisherDemoNode()
+        : Node("qos_publisher_demo_node") {
         // QoS setting for the publisher
-        rclcpp::QoS pub_qos(10); // keep last 10 messages
+        rclcpp::QoS pub_qos(10);  // keep last 10 messages
         // pub_qos.keep_all();
-        pub_qos.reliable();        // reliable reliability
-        pub_qos.transient_local(); // transient local durability
+        pub_qos.reliable();         // reliable reliability
+        pub_qos.transient_local();  // transient local durability
         // Initialize the publisher
         publisher_ = this->create_publisher<example_interfaces::msg::Int64>("qos_demo", pub_qos);
 
@@ -21,10 +22,10 @@ public:
             std::chrono::milliseconds(500),
             std::bind(&QoSPublisherDemoNode::publish_int, this));
 
-        RCLCPP_INFO(this->get_logger(), "\033[38;5;214m== QoS Publisher Demo Node Started ==\033[0m");
+        RCLCPP_INFO_STREAM(this->get_logger(), output_magenta("== QoS Publisher Demo Node Started =="));
     }
 
-private:
+   private:
     /**
      * @brief Counter variable used for publishing integer values.
      *

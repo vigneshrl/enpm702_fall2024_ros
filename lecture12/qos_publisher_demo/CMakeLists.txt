@@ -12,7 +12,7 @@ find_package(example_interfaces REQUIRED)
 
 include_directories(include/qos_publisher_demo)
 
-add_executable(qos_publisher_demo src/main.cpp src/qos_publisher_demo_node.cpp)
+add_executable(qos_publisher_demo src/main.cpp src/qos_publisher_demo_node.cpp src/color_utils.cpp)
 
 ament_target_dependencies(qos_publisher_demo rclcpp example_interfaces)
 

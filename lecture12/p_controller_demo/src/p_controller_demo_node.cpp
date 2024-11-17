@@ -1,6 +1,6 @@
 #include "p_controller_demo_node.hpp"
 
-void ProportionalController::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg) {
+void ProportionalControllerDemoNode::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg) {
     // Extract current position
     current_x_ = msg->pose.pose.position.x;
     current_y_ = msg->pose.pose.position.y;
@@ -13,7 +13,7 @@ void ProportionalController::odom_callback(const nav_msgs::msg::Odometry::Shared
     control_loop();
 }
 
-void ProportionalController::control_loop() {
+void ProportionalControllerDemoNode::control_loop() {
     // Calculate distance and angular errors
     double distance_error = std::sqrt(std::pow(goal_x_ - current_x_, 2) + std::pow(goal_y_ - current_y_, 2));
     double desired_angle = std::atan2(goal_y_ - current_y_, goal_x_ - current_x_);
@@ -42,14 +42,14 @@ void ProportionalController::control_loop() {
     }
 }
 
-void ProportionalController::publish_velocity(double linear, double angular) {
+void ProportionalControllerDemoNode::publish_velocity(double linear, double angular) {
     auto msg = geometry_msgs::msg::Twist();
     msg.linear.x = linear;
     msg.angular.z = angular;
     velocity_publisher_->publish(msg);
 }
 
-double ProportionalController::normalize_angle(double angle) {
+double ProportionalControllerDemoNode::normalize_angle(double angle) {
     while (angle > M_PI)
         angle -= 2.0 * M_PI;
     while (angle < -M_PI)

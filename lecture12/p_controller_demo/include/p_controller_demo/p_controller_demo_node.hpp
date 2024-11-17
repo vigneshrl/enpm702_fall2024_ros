@@ -5,18 +5,19 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "color_utils.hpp"
 
-class ProportionalController : public rclcpp::Node {
+class ProportionalControllerDemoNode : public rclcpp::Node {
    public:
-    ProportionalController()
-        : Node("p_controller_demo") {
+    ProportionalControllerDemoNode()
+        : Node("p_controller_demo_node") {
         // Publisher for velocity commands
         velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
 
         // Subscriber for odometry data
         odom_subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
             "/odom", 10,
-            std::bind(&ProportionalController::odom_callback, this, std::placeholders::_1));
+            std::bind(&ProportionalControllerDemoNode::odom_callback, this, std::placeholders::_1));
 
         // Set the goal position and orientation
         goal_x_ = 2.0;
@@ -29,6 +30,7 @@ class ProportionalController : public rclcpp::Node {
         kp_angle_ = 2.0;
         epsilon_ = 0.1;         // Positional tolerance
         epsilon_theta_ = 0.05;  // Angular tolerance (radians)
+        RCLCPP_INFO_STREAM(this->get_logger(), output_yellow("== Proportional Controller Demo Node Started =="));
     }
 
    private:

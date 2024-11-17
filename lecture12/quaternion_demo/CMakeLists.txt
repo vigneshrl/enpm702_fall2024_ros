@@ -13,7 +13,7 @@ find_package(tf2 REQUIRED)
 
 include_directories(include/quaternion_demo)
 
-add_executable(quat_demo src/main.cpp src/quaternion_example.cpp)
+add_executable(quat_demo src/main.cpp src/quaternion_example.cpp src/color_utils.cpp)
 
 ament_target_dependencies(quat_demo rclcpp geometry_msgs tf2)
 
