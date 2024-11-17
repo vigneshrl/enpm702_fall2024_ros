@@ -4,34 +4,31 @@
 #include "geometry_msgs/msg/quaternion.hpp"
 #include "geometry_msgs/msg/pose.hpp"
 
-
-
 void QuaternionExampleNode::publish_pose()
 {
     geometry_msgs::msg::PoseStamped pose_stamped;
-        pose_stamped.header.stamp = this->now();
-        pose_stamped.header.frame_id = "map";
+    pose_stamped.header.stamp = this->now();
+    pose_stamped.header.frame_id = "map";
 
-        // Set position (optional, just for visualization)
-        pose_stamped.pose.position.x = 0.0;
-        pose_stamped.pose.position.y = 0.0;
-        pose_stamped.pose.position.z = 0.0;
+    // Set position (optional, just for visualization)
+    pose_stamped.pose.position.x = 0.0;
+    pose_stamped.pose.position.y = 0.0;
+    pose_stamped.pose.position.z = 0.0;
 
-        // Set orientation (quaternion)
-        pose_stamped.pose.orientation.x = 0.707;
-        pose_stamped.pose.orientation.y = 0.0;
-        pose_stamped.pose.orientation.z = 0.0;
-        pose_stamped.pose.orientation.w = 0.707;
+    // Set orientation (quaternion)
+    pose_stamped.pose.orientation.x = 0.707;
+    pose_stamped.pose.orientation.y = 0.0;
+    pose_stamped.pose.orientation.z = 0.0;
+    pose_stamped.pose.orientation.w = 0.707;
 
-        publisher_->publish(pose_stamped);
+    publisher_->publish(pose_stamped);
 
-        RCLCPP_INFO_STREAM(this->get_logger(), "Published pose with quaternion: "
-            << "x: " << pose_stamped.pose.orientation.x << ", "
-            << "y: " << pose_stamped.pose.orientation.y << ", "
-            << "z: " << pose_stamped.pose.orientation.z << ", "
-            << "w: " << pose_stamped.pose.orientation.w);
-    }
-
+    RCLCPP_INFO_STREAM(this->get_logger(), "Published pose with quaternion: "
+                                               << "x: " << pose_stamped.pose.orientation.x << ", "
+                                               << "y: " << pose_stamped.pose.orientation.y << ", "
+                                               << "z: " << pose_stamped.pose.orientation.z << ", "
+                                               << "w: " << pose_stamped.pose.orientation.w);
+}
 
 void QuaternionExampleNode::convert_rpy_to_quaternion()
 {
