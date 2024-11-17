@@ -33,3 +33,6 @@
 
 # Folders
 .vscode
+build
+log
+install
