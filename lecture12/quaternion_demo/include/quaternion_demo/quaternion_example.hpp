@@ -20,7 +20,7 @@ public:
             std::bind(&QuaternionExampleNode::publish_pose, this));
 
 
-        RCLCPP_INFO(this->get_logger(), "Quaternion Node Started");
+        RCLCPP_INFO(this->get_logger(), "\033[38;5;214mQuaternion Node Started\033[0m");
         RCLCPP_INFO_STREAM(this->get_logger(), "================");
         convert_rpy_to_quaternion();
         RCLCPP_INFO_STREAM(this->get_logger(), "================");
