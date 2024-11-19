@@ -13,8 +13,8 @@ class QoSSubscriberDemoNode : public rclcpp::Node {
         // initialize the subscriber
         rclcpp::QoS sub_qos(10);  // keep last 10 messages
         // sub_qos.keep_all();
-        sub_qos.reliable();         // reliable reliability
-        sub_qos.transient_local();  // transient local durability
+        sub_qos.reliable();         // reliability
+        sub_qos.transient_local();  // durability
         subscriber_ = this->create_subscription<example_interfaces::msg::Int64>(
             "qos_demo", sub_qos, std::bind(&QoSSubscriberDemoNode::receive_int, this, std::placeholders::_1));
 

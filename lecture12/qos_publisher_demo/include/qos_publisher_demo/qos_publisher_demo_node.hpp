@@ -12,8 +12,8 @@ class QoSPublisherDemoNode : public rclcpp::Node {
         // QoS setting for the publisher
         rclcpp::QoS pub_qos(10);  // keep last 10 messages
         // pub_qos.keep_all();
-        pub_qos.reliable();         // reliable reliability
-        pub_qos.transient_local();  // transient local durability
+        pub_qos.reliable();         // reliability
+        pub_qos.transient_local();  // durability
         // Initialize the publisher
         publisher_ = this->create_publisher<example_interfaces::msg::Int64>("qos_demo", pub_qos);
 
