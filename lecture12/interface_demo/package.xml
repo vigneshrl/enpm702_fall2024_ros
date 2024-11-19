@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>p_controller_demo</name>
+  <name>interface_demo</name>
   <version>0.0.0</version>
-  <description>Package which showcases the use of a proportional controller</description>
+  <description>This package is used to demonstrate how to use custom interfaces</description>
   <maintainer email="zeidk@umd.edu">zeid kootbally</maintainer>
   <license>BSD 3-Clause</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <depend>enpm702_msgs</depend>
   <depend>rclcpp</depend>
   <depend>nav_msgs</depend>
-  <depend>geometry_msgs</depend>
   <depend>tf2_geometry_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
