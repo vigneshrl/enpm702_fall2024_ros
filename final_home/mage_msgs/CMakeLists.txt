@@ -15,6 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 set(msg_files
   "msg/AdvancedLogicalCameraImage.msg"
   "msg/Part.msg"
+  "msg/Parts.msg"
   "msg/PartPose.msg"
   "msg/Sensors.msg"
   "msg/Marker.msg"

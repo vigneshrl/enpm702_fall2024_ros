@@ -70,6 +70,16 @@ def launch_setup(context, *args, **kwargs):
             {"use_sim_time": True},
         ],
     )
+    
+    # part_publisher_node
+    part_publisher_node = Node(
+        package="part_publisher",
+        executable="part_publisher_exe",
+        output="screen",
+        parameters=[
+            {"use_sim_time": True},
+        ],
+    )
 
     # Environment Startup
     environment_startup = Node(
@@ -147,7 +157,7 @@ def launch_setup(context, *args, **kwargs):
         gazebo,
         environment_startup,
         part_spawner_cmd,
-        robot_target_cmd,
+        # robot_target_cmd,
         # start_aruco_detection_node_cmd,
         robot_state_publisher_cmd,
         spawn_turtlebot_cmd,
@@ -156,6 +166,7 @@ def launch_setup(context, *args, **kwargs):
         static_transform_cmd,
         # broadcast_cmd,
         rviz_cmd,
+        part_publisher_node
     ]
 
     return nodes_to_start
