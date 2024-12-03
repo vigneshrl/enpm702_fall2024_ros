@@ -32,7 +32,7 @@ def generate_launch_description():
         executable="temperature_demo"
     )
     
-    processing_node = Node(
+    processing1_node = Node(
         package="sensor_demo",
         executable="processing_demo",
         name="processing1_demo",
@@ -40,11 +40,21 @@ def generate_launch_description():
             ("scan", "lidar1_scan"),  # Topic remapping
         ],
     )
+    
+    processing2_node = Node(
+        package="sensor_demo",
+        executable="processing_demo",
+        name="processing2_demo",
+        remappings=[
+            ("scan", "lidar2_scan"),  # Topic remapping
+        ],
+    )
 
     ld.add_action(lidar1_node)
     ld.add_action(lidar2_node)
     ld.add_action(camera_node)
     ld.add_action(temperature_node)
-    ld.add_action(processing_node)
+    ld.add_action(processing1_node)
+    ld.add_action(processing2_node)
 
     return ld

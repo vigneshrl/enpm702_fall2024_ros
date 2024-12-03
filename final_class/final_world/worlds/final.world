@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="default">
+    <!-- Include the ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Include a light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Define the cube -->
+    <model name="box">
+      <static>true</static>
+      <pose>5 5 0 0 0 0</pose>
+
+      <!-- Link with no collision -->
+      <link name="visual_only_link">
+        <!-- Visual element -->
+        <visual name="cube_visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 0.5</ambient> <!-- Red color with transparency -->
+            <diffuse>1 0 0 0.5</diffuse> <!-- Red color with transparency -->
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <!-- No collision element -->
+      </link>
+    </model>
+
+    <!-- Define the cylinder -->
+    <model name="final_target">
+      <static>true</static>
+      <pose>9 9 0 0 0 0</pose>
+
+      <!-- Link with no collision -->
+      <link name="visual_only_cylinder">
+        <!-- Visual element -->
+        <visual name="cylinder_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 0 0.5</ambient> <!-- Yellow color with transparency -->
+            <diffuse>1 1 0 0.5</diffuse> <!-- Yellow color with transparency -->
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <!-- No collision element -->
+      </link>
+    </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>9.58609 -10.6852 13.5369 0 0.699643 1.8522</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
